@@ -63,5 +63,32 @@
 		<script src="js/jquery-3.1.0.min.js"></script>
 		<script src="js/underscore.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			console.log("start");
+
+			var redirect = function(word) {
+				if (word) {
+					location.href = "view?word=" + word;
+				} else {
+					$("#word").focus();
+				}
+			}
+
+			// 検索開始
+			$("#word").on("keypress", function(e) {
+				if (e.keyCode == 13) {
+					redirect($(this).val());
+				}
+			});
+			
+			// 検索開始
+			$("#search").click(function() {
+				redirect($("#word").val());
+			});
+
+		});
+		</script>
+
 	</body>
 </html>
