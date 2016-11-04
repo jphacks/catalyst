@@ -2,7 +2,7 @@
 
 App::uses('AppController', 'Controller');
 
-class UserController extends AppController {
+class UsersController extends AppController {
 	   public function beforeFilter() {
         parent::beforeFilter();//これがないと、親であるAppControllerのbeforeFilter()が実行されない
 
