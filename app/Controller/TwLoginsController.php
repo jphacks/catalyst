@@ -6,7 +6,7 @@
 		public $uses = array('NewUser'); //Userモデルを追加
 		/****認証周り*****/
 		public $components = array(
-			'DebugKit.Toolbar', //デバッグきっと
+			// 'DebugKit.Toolbar', //デバッグきっと
 			'TwitterKit.Twitter', //twitter
 			'Auth' => array( //ログイン機能を利用する
 				'authenticate' => array(
