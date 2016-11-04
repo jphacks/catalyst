@@ -31,6 +31,24 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $components = array(
+		'Auth' => array(
+			// 'loginRedirect' => array(
+			// 	'controller' => 'Home',
+			// 	'action' => 'index'
+			// ),
+			// 'logoutRedirect' => array(
+			// 	'controller' => 'Home',
+			// 	'action' => 'index',
+			// 	'home'
+			// ),
+			'authenticate' => array(
+				'Form' => array(
+					'passwordHasher' => 'Blowfish'
+				)
+			)
+		)
+	);
 	public function beforeRender()
 	{
 		$this->autoLayout = false;  // レイアウトをOFFにする

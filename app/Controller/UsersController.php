@@ -3,6 +3,15 @@
 App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
+        public $components = array(
+        'Auth' => array(
+            'authenticate' => array(
+                'Form' => array(
+                    'fields' => array('username' => 'email')
+                )
+            )
+        )
+    );
 	   public function beforeFilter() {
         parent::beforeFilter();//これがないと、親であるAppControllerのbeforeFilter()が実行されない
 
