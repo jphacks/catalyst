@@ -107,8 +107,9 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
+Configure::load("twitter.php"); 
 
 Configure::write('Opauth.Strategy.Twitter', array(
-	'key'    => 'QqLDVKdaFSAHlXWKFoPq08R95',
-	'secret' => 'BwAbHCi02YmsUc8KEjcMcMWoeY6P5P5uRgvbQD7RczvdTweNMm'
+	'key'    => Configure::read("Consumer.Key"),
+	'secret' => Configure::read("Consumer.Secret")
 ));
