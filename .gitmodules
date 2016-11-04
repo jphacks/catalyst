@@ -1,0 +1,3 @@
+[submodule "plugins/TwitterKit"]
+	path = plugins/TwitterKit
+	url = git@github.com:elstc/twitter_kit.git
