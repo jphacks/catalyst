@@ -106,4 +106,9 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
-CakePlugin::load('TwitterKit');
+CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
+
+Configure::write('Opauth.Strategy.Twitter', array(
+	'key'    => 'QqLDVKdaFSAHlXWKFoPq08R95',
+	'secret' => 'BwAbHCi02YmsUc8KEjcMcMWoeY6P5P5uRgvbQD7RczvdTweNMm'
+));
