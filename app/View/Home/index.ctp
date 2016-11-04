@@ -59,9 +59,43 @@
 
 			<p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank" rel="license">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license">CC BY 3.0</a>.</p>
 		</div>
-
+		<!-- output start auth -->
+		<div>
+			<pre>
+				<?php var_dump($user); ?>
+			</pre>
+			<img src="<?php echo $user['img'];?>"/>
+		</div>
+		<!-- output end auth -->
 		<script src="js/jquery-3.1.0.min.js"></script>
 		<script src="js/underscore.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			console.log("start");
+
+			var redirect = function(word) {
+				if (word) {
+					location.href = "view?word=" + word;
+				} else {
+					$("#word").focus();
+				}
+			}
+
+			// 検索開始
+			$("#word").on("keypress", function(e) {
+				if (e.keyCode == 13) {
+					redirect($(this).val());
+				}
+			});
+			
+			// 検索開始
+			$("#search").click(function() {
+				redirect($("#word").val());
+			});
+
+		});
+		</script>
+
 	</body>
 </html>

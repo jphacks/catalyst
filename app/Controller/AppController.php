@@ -33,15 +33,15 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $components = array(
 		'Auth' => array(
-			// 'loginRedirect' => array(
-			// 	'controller' => 'Home',
-			// 	'action' => 'index'
-			// ),
-			// 'logoutRedirect' => array(
-			// 	'controller' => 'Home',
-			// 	'action' => 'index',
-			// 	'home'
-			// ),
+			'loginRedirect' => array(
+				'controller' => 'Home',
+				'action' => 'index'
+			),
+			'logoutRedirect' => array(
+				'controller' => 'Home',
+				'action' => 'index',
+				'home'
+			),
 			'authenticate' => array(
 				'Form' => array(
 					'passwordHasher' => 'Blowfish'
@@ -49,6 +49,12 @@ class AppController extends Controller {
 			)
 		)
 	);
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index','view');
+		$this->set('user', $this->Auth->user());
+	}
+
 	public function beforeRender()
 	{
 		$this->autoLayout = false;  // レイアウトをOFFにする
