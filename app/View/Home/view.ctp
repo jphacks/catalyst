@@ -58,7 +58,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="http://localhost:8080">*Catalyst</a>
+			<a class="navbar-brand" href="<?php echo $this->html->url('/', true); ?>">*Catalyst</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -69,7 +69,7 @@
 				</div>
 			</form>
 			<ul class="nav navbar-nav">
-				<li><a href="http://localhost:8080/like.html" class="w">Link</a></li>
+				<li><a href="<?php echo $this->html->url('/', true); ?>/like.html" class="w">Link</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
@@ -187,7 +187,7 @@
 			if (word) {
 				fetchData(word);
 			} else {
-				location.href = "http://localhost:8080/";
+				location.href = "<?php echo $this->html->url('/', true); ?>/";
 			}
 
 			// 検索開始
