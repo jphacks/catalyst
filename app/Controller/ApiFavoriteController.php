@@ -28,7 +28,7 @@ class ApiFavoriteController extends AppController {
 
 		if ($query['word1'] && $query['word2']) {
 			$saveData = array(
-				'user_id' => 1,
+				'user_id' => $this->Auth->user('id'),
 				'word1' => $query['word1'],
 				'word2' => $query['word2']
 			);
