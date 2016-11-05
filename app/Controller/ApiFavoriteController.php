@@ -17,7 +17,6 @@ class ApiFavoriteController extends AppController {
 		} else {
 			$result = $this->Favorite->getData($this->Auth->user('id'));
 		}
-
 		$tmp = $result;
 		$result = array();
 		foreach ($tmp as $value) {
