@@ -41,6 +41,7 @@
  */
  	Router::mapResources('ApiFavorite');
  	Router::mapResources('ApiWvec');
+	Router::mapResources('ApiLikes');
 	Router::parseExtensions('json');
 
 	CakePlugin::routes();

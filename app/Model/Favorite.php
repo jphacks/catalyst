@@ -54,8 +54,8 @@ App::uses('AppModel', 'Model');
 			$result = $this->find('first', array(
 				'conditions' => array(
 					'Favorite.user_id' => $data['user_id'],
-					'Favorite.word1' => $data['word1'],
-					'Favorite.word2' => $data['word2']
+					'Favorite.word1' => array($data['word1'],$data['word2']),
+					'Favorite.word2' => array($data['word1'],$data['word2'])
 				)
 			));
 			if (!empty($result)) {
@@ -64,5 +64,17 @@ App::uses('AppModel', 'Model');
 			
 			return $this->save($data);
 
+		}
+		public function getLikeNum($data) {
+			if (!isset($data['word1']) || !isset($data['word2'])) {
+				return 0;
+			}
+			$result = $this->find('count', array(
+				'conditions' => array(
+						'Favorite.word1' => array($data['word1'],$data['word2']),
+						'Favorite.word2' => array($data['word1'],$data['word2'])
+				)
+			));
+			return $result;
 		}
 	}
