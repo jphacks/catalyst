@@ -7,7 +7,7 @@ class ApiWvecController extends AppController {
 	public function index() {
 		$this->viewClass = 'Json';
 		$isError = false;
-		$response;
+		$response = null;
 
 		if (isset($this->request->query['word'])) {
 			$word = $this->request->query['word'];
@@ -17,19 +17,17 @@ class ApiWvecController extends AppController {
 		}
 
 		if (!$isError) {
-			// ISBNを用いて、国会図書館APIから書籍情報を取得する
 			$ch = curl_init();
-			$uri = 'http://150.42.5.138//word2vec?word=' . $word;
+			$uri = '' . Configure::read('API_SERVER') . '/word2vec?word=' . urlencode($word);
 			$options = array(
 				CURLOPT_URL => $uri,
 				CURLOPT_HEADER => false,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_TIMEOUT => 60, 
 				CURLOPT_CUSTOMREQUEST => 'GET',
-				CURLOPT_POSTFIELDS => null, // URLエンコードして application/x-www-form-urlencoded でエンコード。URLエンコードしないとmultipart/form-dataになる
 			);
 			curl_setopt_array($ch, $options);
-			$response =curl_exec($ch) ;// 第2引数をtrueにすると連想配列で返ってくる
+			$response =curl_exec($ch);
 			curl_close($ch);
 		}
 
