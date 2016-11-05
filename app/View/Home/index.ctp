@@ -76,19 +76,25 @@
 			new Vue({
 				el: '#app',
 				data: {
+					// 検索単語
 					word: ''
 				},
 				methods: {
+					/**
+					 * 検索単語入力時に <ENTER>
+					 */
 					onEnter: function(event) {
-						// console.log(event);
-						// console.log(this.word);
 						this.redirect(this.word);
 					},
+					/**
+					 * 検索ボタンが押された
+					 */
 					doSearch: function(event) {
-						// console.log(event);
-						// console.log(this.word);
 						this.redirect(word);
 					},
+					/**
+					 * /view に全てに任せる
+					 */
 					redirect: function(word) {
 						if (word) {
 							location.href = "view?word=" + word;
