@@ -90,7 +90,7 @@
 					 * 検索ボタンが押された
 					 */
 					doSearch: function(event) {
-						this.redirect(word);
+						this.redirect(this.word);
 					},
 					/**
 					 * /view に全てに任せる
