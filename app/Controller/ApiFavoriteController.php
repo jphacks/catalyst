@@ -17,6 +17,12 @@ class ApiFavoriteController extends AppController {
 		} else {
 			$result = $this->Favorite->getData($this->Auth->user('id'));
 		}
+
+		$tmp = $result;
+		$result = array();
+		foreach ($tmp as $value) {
+			$result[] = $value['Favorite'];
+		}
 		$this->set(array(
 			'result' => $result,
 			'_serialize' => array('result')
