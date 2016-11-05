@@ -24,6 +24,8 @@ class ApiFavoriteController extends AppController {
 	}
 
 	public function add() {
+		$this->viewClass = 'Json';
+
 		$result = false;
 		$query = $this->request->query;
 
