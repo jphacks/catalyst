@@ -47,7 +47,7 @@
 		</div>
 	</script>
 </head>
-<body>
+<body id="app">
 	<nav class="navbar navbar-default bs-docs-header">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -58,18 +58,18 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="http://localhost:8080">*Catalyst</a>
+			<a class="navbar-brand" href="<?php echo $this->html->url('/', true); ?>">*Catalyst</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<form class="navbar-form navbar-left">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="気になる単語" id="word">
-					<button class="btn btn-default" id="search" onclick="return false;">調べる</button>
+					<input type="text" class="form-control" placeholder="気になる単語" id="word" v-model="word" @keyup.enter="onEnter">
+					<button class="btn btn-default" id="search" onclick="return false;" v-on:click="doSearch">調べる</button>
 				</div>
 			</form>
 			<ul class="nav navbar-nav">
-				<li><a href="http://localhost:8080/like.html" class="w">Link</a></li>
+				<li><a href="<?php echo $this->html->url('/', true); ?>/like.html" class="w">Link</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
@@ -90,6 +90,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.fittext.js"></script>
 	<script src="js/jquery.cookie-1.4.1.min.js"></script>
+	<script src="js/vue.js"></script>
 	<script type="text/javascript">
 		$(function() {
 
@@ -117,6 +118,12 @@
 			}
 			var setFav = function(word1, word2) {
 				$.cookie(keyFormat(word1, word2), 'true');
+				$.ajax({
+					type: "POST",
+					url: "/api_favorite/?word1="+word1+"&word2="+word2
+				}).done(function(json) {
+					console.log(json);
+				});
 			}
 			var unsetFav = function(word1, word2) {
 				$.cookie(keyFormat(word1, word2), 'false');
@@ -149,6 +156,79 @@
 			var loading = _.template($("#loading").html());
 			var empty = _.template($("#empty").html());
 
+			new Vue({
+				el: '#app',
+				data: {
+					words: [],
+					api: "/api_wvec?word=",
+				},
+				methods: {
+					/**
+					 * GET パラメタ取得
+					 */
+					getQueryParams: function() {
+						var result = {};
+						if (1 < window.location.search.length) {
+							var query = window.location.search.substring(1);
+							var parameters = query.split("&");
+							for (var i = 0; i < parameters.length; i++) {
+								var element = parameters[i].split("=");
+								var paramName = decodeURIComponent(element[0]);
+								var paramValue = decodeURIComponent(element[1]);
+								result[paramName] = paramValue;
+							}
+						}
+						return result;
+					},
+					/**
+					 * 単語対をサーバから取得する
+					 */
+					fetchWordList: function(word) {
+						$.ajax({
+							type: "GET",
+							url: this.api + word,
+						}).done(function(json) {
+							var json = JSON.parse(json);
+							$("#wrapper").children().fadeOut("fast", function() {
+								$("#wrapper").children().remove();
+								if (json.length == 0) {
+									$("#wrapper").append(empty());
+								}
+								$.each(json, function(index, elem) {
+									var compiled = item({
+										word1: $("#word").val(),
+										word2: elem[0],
+										id: keyFormat($("#word").val(), elem[0]),
+										isFav: isFav($("#word").val(), elem[0]),
+									});
+									$("#wrapper").append(compiled);
+								});
+
+								// 見栄え調整
+								$(".word2").fitText();
+							});
+						});
+					},
+					emptyWordList: function() {
+						this.words = [];
+					},
+					/**
+					 * 検索ボタンが押された
+					 */
+					doSearch: function(event) {
+						console.log(event);
+						console.log(this.word);
+					},
+					/**
+					 * 検索単語入力時に <ENTER>
+					 */
+					onEnter: function(event) {
+						console.log(event);
+						console.log(this.word);
+					}
+				}
+			});
+
 			// データ取得
 			var fetchData = function(word) {
 				$("#word").val(word);
@@ -156,9 +236,10 @@
 				$("#wrapper").append(loading());
 				$.ajax({
 					type: "GET",
-					url: "http://150.42.5.138//word2vec?word=" + word,
-					}).done(function(json) {
-						$("#wrapper").children().fadeOut("fast", function() {
+					url: "/api_wvec?word=" + word,
+				}).done(function(json) {
+					var json = JSON.parse(json);
+					$("#wrapper").children().fadeOut("fast", function() {
 						$("#wrapper").children().remove();
 						if (json.length == 0) {
 							$("#wrapper").append(empty());
@@ -174,7 +255,7 @@
 						});
 
 						// 見栄え調整
-						$(".word2").fitText();              
+						$(".word2").fitText();
 					});
 				});
 			}
@@ -185,20 +266,18 @@
 			if (word) {
 				fetchData(word);
 			} else {
-				location.href = "http://localhost:8080/";
+				location.href = "<?php echo $this->html->url('/', true); ?>/";
 			}
 
 			// 検索開始
 			$("#word").on("keypress", function(e) {
 				if (e.keyCode == 13) {
-					console.log($(this).val());
-					// fetchData($(this).val());
+					fetchData($(this).val());
 				}
 			});
 
 			// 検索開始
 			$("#search").click(function() {
-				// console.log($("#word").val());
 				fetchData($("#word").val());
 			});
 		});
