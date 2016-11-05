@@ -22,7 +22,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row form">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="input-group input-group-lg">
 					<input type="text" class="form-control" placeholder="気になる単語" aria-describedby="basic-addon1" v-model="word" @keyup.enter="onEnter">
@@ -33,7 +33,11 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row step">
+			<div class="col-md-12 step3">
+				<h2>3 ステップ</h2>
+			</div>
+
 			<div class="col-sm-4">
 				<img alt="search word" src="img/search.gif" class="img-responsive">
 				<h3>1. 調べる</h3>
@@ -54,7 +58,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row footer">
 			<p>Powered by <a href="https://radimrehurek.com/gensim/models/word2vec.html">word2vec</a>, <a href="http://taku910.github.io/mecab/">MeCab</a>, <a href="https://falconframework.org/">Falcon</a>, <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
 
 			<p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank" rel="license">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license">CC BY 3.0</a>.</p>
