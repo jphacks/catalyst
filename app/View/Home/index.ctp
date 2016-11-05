@@ -14,7 +14,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
+	<body id="app">
 		<div class="bs-docs-header">
 			<div class="container">
 				<h1>*Catalyst</h1>
@@ -25,9 +25,9 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="input-group input-group-lg">
-					<input type="text" class="form-control" placeholder="気になる単語" aria-describedby="basic-addon1" id="word">
+					<input type="text" class="form-control" placeholder="気になる単語" aria-describedby="basic-addon1" v-model="word" @keyup.enter="onEnter">
 					<div class="input-group-btn">
-						<button type="button" class="btn btn-default" id="search">調べる</button>
+						<button type="button" class="btn btn-default" v-on:click="doSearch">調べる</button>
 					</div>
 				</div>
 			</div>
@@ -70,30 +70,34 @@
 		<script src="js/jquery-3.1.0.min.js"></script>
 		<script src="js/underscore.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
 		<script type="text/javascript">
 		$(function() {
-			console.log("start");
-
-			var redirect = function(word) {
-				if (word) {
-					location.href = "view?word=" + word;
-				} else {
-					$("#word").focus();
-				}
-			}
-
-			// 検索開始
-			$("#word").on("keypress", function(e) {
-				if (e.keyCode == 13) {
-					redirect($(this).val());
+			new Vue({
+				el: '#app',
+				data: {
+					word: ''
+				},
+				methods: {
+					onEnter: function(event) {
+						// console.log(event);
+						// console.log(this.word);
+						this.redirect(this.word);
+					},
+					doSearch: function(event) {
+						// console.log(event);
+						// console.log(this.word);
+						this.redirect(word);
+					},
+					redirect: function(word) {
+						if (word) {
+							location.href = "view?word=" + word;
+						} else {
+							$("#word").focus();
+						}
+					}
 				}
 			});
-			
-			// 検索開始
-			$("#search").click(function() {
-				redirect($("#word").val());
-			});
-
 		});
 		</script>
 
