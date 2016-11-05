@@ -4,10 +4,10 @@ App::uses('AppController', 'Controller');
 
 class ApiFavoriteController extends AppController {
 	public $components = array('RequestHandler');
-	public $uses = array('Favorite');
+	public $uses = array('Favorite', 'SearchKey');
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow();
+		// $this->Auth->allow();
 	}
 
 	public function index() {
@@ -17,11 +17,13 @@ class ApiFavoriteController extends AppController {
 		} else {
 			$result = $this->Favorite->getData($this->Auth->user('id'));
 		}
+		debug($result);
 		$this->set(array(
 			'result' => $result,
 			'_serialize' => array('result')
 		));
 	}
+
 	public function add() {
 		$result = false;
 		$query = $this->request->query;
