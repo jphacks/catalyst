@@ -5,7 +5,6 @@ App::uses('AppController', 'Controller');
 class ApiWvecController extends AppController {
 	public $components = array('RequestHandler');
 	public function index() {
-		$this->viewClass = 'Json';
 		$isError = false;
 		$response = null;
 
@@ -31,9 +30,6 @@ class ApiWvecController extends AppController {
 			curl_close($ch);
 		}
 
-		$this->set(array(
-			'result' => $response,
-			'_serialize' => array('result')
-		));
+		$this->set("json", $response);
 	}
 }

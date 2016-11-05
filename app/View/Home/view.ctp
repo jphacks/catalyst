@@ -156,9 +156,11 @@
 				$("#wrapper").append(loading());
 				$.ajax({
 					type: "GET",
-					url: "http://150.42.5.138//word2vec?word=" + word,
-					}).done(function(json) {
-						$("#wrapper").children().fadeOut("fast", function() {
+					// dataType: "JSON",
+					url: "/api_wvec?word=" + word,
+				}).done(function(json) {
+					var json = JSON.parse(json);
+					$("#wrapper").children().fadeOut("fast", function() {
 						$("#wrapper").children().remove();
 						if (json.length == 0) {
 							$("#wrapper").append(empty());
@@ -174,7 +176,7 @@
 						});
 
 						// 見栄え調整
-						$(".word2").fitText();              
+						$(".word2").fitText();
 					});
 				});
 			}
