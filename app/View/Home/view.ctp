@@ -18,24 +18,28 @@
 		<% if (isFav) { %>
 			<a href="https://www.google.co.jp/#newwindow=1&q=<%= word1 %>+<%= word2 %>" target="_blank" onclick="switchFav('<%= word1 %>', '<%= word2 %>')">
 			<div class="col-md-4 item fav" id="<%= id %>">
-				<p class="word1"><%= word1 %></p>
-				<p class="text-center">x</p>
-				<p class="word2"><%= word2 %></p>
+				<div class="pear">
+					<p class="word1"><%= word1 %></p>
+					<p class="text-center">x</p>
+					<p class="word2"><%= word2 %></p>					
+				</div>
 			</div>
 			</a>
 		<% } else { %>
 			<a href="https://www.google.co.jp/#newwindow=1&q=<%= word1 %>+<%= word2 %>" target="_blank" onclick="switchFav('<%= word1 %>', '<%= word2 %>')">
 			<div class="col-md-4 item" id="<%= id %>">
-				<p class="word1"><%= word1 %></p>
-				<p class="text-center">x</p>
-				<p class="word2"><%= word2 %></p>
+				<div class="pear">
+					<p class="word1"><%= word1 %></p>
+					<p class="text-center">x</p>
+					<p class="word2"><%= word2 %></p>
+				</div>
 			</div>
 			</a>
 		<% }%>
 	</script>
 
 	<script type="text/template" id="loading">
-		<div class="col-md-4">
+		<div class="col-md-1">
 			<img src="img/loading3.gif">      
 		</div>
 	</script>
@@ -76,7 +80,7 @@
 	</nav>
 	<div class="row main" id="wrapper">
 		<!-- append child -->
-		<div class="col-md-4">
+		<div class="col-md-1">
 			<img src="img/loading3.gif">      
 		</div>
 	</div>
@@ -255,7 +259,7 @@
 						});
 
 						// 見栄え調整
-						$(".word2").fitText();
+						// $(".word2").fitText();
 					});
 				});
 			}
