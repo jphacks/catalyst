@@ -46,11 +46,16 @@ class AppController extends Controller {
 				'Form' => array(
 					'passwordHasher' => 'Blowfish'
 				)
+			),
+			'unauthorizedRedirect' => array(
+				'controller' => 'auth',
+				'action' => 'twitter'
 			)
 		)
 	);
 	public function beforeFilter() {
 		parent::beforeFilter();
+		$this->Auth->autoRedirect = false;
 		$this->Auth->allow('index','view');
 		$this->set('user', $this->Auth->user());
 	}
