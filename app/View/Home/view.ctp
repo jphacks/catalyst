@@ -65,22 +65,22 @@
 			<form class="navbar-form navbar-left">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="気になる単語" id="word" v-model="word" @keyup.enter="onEnter">
-					<button class="btn btn-default" id="search" onclick="return false;" v-on:click="doSearch">調べる</button>
+					<button class="btn btn-default" id="search" onclick="return false;" v-on:click="doSearch"><img src="/img/search1.png" alt="search" width="18" height="18"></button>
 				</div>
 			</form>
 			<ul class="nav navbar-nav">
-				<li><a href="<?php echo $this->html->url('/', true); ?>/like.html" class="w">Link</a></li>
+				<li><a href="<?php echo $this->html->url('/', true); ?>/like.html" class="w">Like</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 	</nav>
-	<div class="row" id="wrapper">
+	<div class="row main" id="wrapper">
 		<!-- append child -->
 		<div class="col-md-4">
 			<img src="img/progress.gif">      
 		</div>
 	</div>
-	<div class="row">
+	<div class="row footer">
 	<p>Powered by <a href="https://radimrehurek.com/gensim/models/word2vec.html">word2vec</a>, <a href="http://taku910.github.io/mecab/">MeCab</a>, <a href="https://falconframework.org/">Falcon</a>, <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
 
 	<p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank" rel="license">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license">CC BY 3.0</a>.</p>

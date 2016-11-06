@@ -27,7 +27,7 @@
 				<div class="input-group input-group-lg">
 					<input type="text" class="form-control" placeholder="気になる単語" aria-describedby="basic-addon1" v-model="word" @keyup.enter="onEnter">
 					<div class="input-group-btn">
-						<button type="button" class="btn btn-default" v-on:click="doSearch">調べる</button>
+						<button type="button" class="btn btn-default" v-on:click="doSearch"><img src="/img/search1.png" alt="search" width="24" height="24"></button>
 					</div>
 				</div>
 			</div>
@@ -35,13 +35,13 @@
 
 		<div class="row step">
 			<div class="col-md-12 step3">
-				<h2>3 ステップ</h2>
+				<h2>How to use?</h2>
 			</div>
 
 			<div class="col-sm-4">
 				<img alt="search word" src="img/search.gif" class="img-responsive">
 				<h3>1. 調べる</h3>
-				<p>あなたが行うことは単語を入力ことだけです．</p>
+				<p>あなたが行うことは単語を入力することだけです．</p>
 				<p>システムは自動でその単語と化学反応が起こりそうな単語候補をリストアップしてくれます．</p>
 			</div>
 			<div class="col-sm-4">
@@ -54,7 +54,7 @@
 				<img alt="Components" src="img/idea.gif" style="height: 180px" class="img-responsive">
 				<h3>3. 生み出す</h3>
 				<p>あとはあなたの出番です．</p>
-				<p>Enjoy!</p> 
+				<p>Let's enjoy!</p> 
 			</div>
 		</div>
 
