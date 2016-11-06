@@ -77,7 +77,7 @@
 	<div class="row main" id="wrapper">
 		<!-- append child -->
 		<div class="col-md-4">
-			<img src="img/progress.gif">      
+			<img src="img/loading3.gif">      
 		</div>
 	</div>
 	<div class="row footer">
