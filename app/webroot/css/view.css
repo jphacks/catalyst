@@ -56,6 +56,9 @@ div.main {
 	position:relative;
 	z-index:3;
 }
+.main::before, .main::after {
+	content: none;
+}
 .item {
 	z-index:2;
 	position: relative;
