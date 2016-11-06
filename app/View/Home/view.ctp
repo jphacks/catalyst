@@ -73,7 +73,7 @@
 				</div>
 			</form>
 			<ul class="nav navbar-nav">
-				<li><a href="<?php echo $this->html->url('/', true); ?>/like.html" class="w">Like</a></li>
+				<li><a href="<?php echo $this->html->url('/', true); ?>likes" class="w">Like</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
