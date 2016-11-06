@@ -16,7 +16,6 @@ class UsersController extends AppController {
 	public function beforeFilter() {
         parent::beforeFilter();//これがないと、親であるAppControllerのbeforeFilter()が実行されない
         $this->Auth->allow(array(
-                                'mypage',
                                 'login',
                                 'logout',
                                 'opauthComplete'
@@ -42,7 +41,14 @@ class UsersController extends AppController {
 	}
     public function login() {
         $this->Auth->login();
-        $this->redirect(array('controller' => 'home', 'action' => 'index'));
+        if (!empty($this->Auth->user())) {
+            // ログインしていた場合、Likesへ移動
+            $this->redirect(array('controller' => 'Likes', 'action' => 'index'));
+        } else {
+            // ログインしていない場合、Twitterの認証ページへ移動
+            $this->redirect('/auth/twitter');
+        }
+
     }
     public function logout() {
         $this->redirect($this->Auth->logout());
