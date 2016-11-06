@@ -143,8 +143,9 @@
 				console.log(word1);
 				console.log(word2);
 				if (isFav(word1, word2)) {
-					unsetFav(word1, word2);
-					$("#"+keyFormat(word1, word2)).removeClass("fav");
+					// unsetFav(word1, word2);
+					// $("#"+keyFormat(word1, word2)).removeClass("fav");
+					setFav(word1, word2);
 				} else {
 					setFav(word1, word2);
 					$("#"+keyFormat(word1, word2)).addClass("fav");
