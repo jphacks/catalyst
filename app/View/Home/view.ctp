@@ -36,7 +36,7 @@
 
 	<script type="text/template" id="loading">
 		<div class="col-md-4">
-			<img src="img/progress.gif">      
+			<img src="img/loading3.gif">      
 		</div>
 	</script>
 
@@ -240,10 +240,10 @@
 				}).done(function(json) {
 					var json = JSON.parse(json);
 					$("#wrapper").children().fadeOut("fast", function() {
-						$("#wrapper").children().remove();
 						if (json.length == 0) {
 							$("#wrapper").append(empty());
 						}
+						// $("#wrapper").empty();
 						$.each(json, function(index, elem) {
 							var compiled = item({
 								word1: $("#word").val(),
