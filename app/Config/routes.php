@@ -26,7 +26,7 @@
  */
 	Router::connect('/', array('controller' => 'Home', 'action' => 'index', 'home'));
 	Router::connect('/view', array('controller' => 'Home', 'action' => 'view'));
-	Router::connect('/likes', array('controller' => 'Likes', 'action' => 'index'));
+	// Router::connect('/likes', array('controller' => 'Likes', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
