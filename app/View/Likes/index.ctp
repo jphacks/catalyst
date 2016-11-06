@@ -42,8 +42,7 @@
 	</div><!-- /.container-fluid -->
 	</nav>
 	<div class="row" id="wrapper">
-		<ul>
-			<li v-for="item in words">
+			<div v-for="item in words">
 				<a href="https://www.google.co.jp/#newwindow=1&q={{ item.word1 }}+{{ item.word2 }}" target="_blank" onclick="switchFav('<%= word1 %>', '<%= word2 %>')">
 					<div class="col-md-4 item" id="<%= id %>">
 						<p class="word1">{{ item.word1 }}</p>
@@ -51,8 +50,7 @@
 						<p class="word2">{{ item.word2 }}</p>
 					</div>
 				</a>
-			</li>
-		</ul>
+			</div>
 		<!-- append child -->
 		<div class="col-md-4">
 			<!-- <img src="img/progress.gif"> -->
