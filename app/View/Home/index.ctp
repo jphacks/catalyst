@@ -51,7 +51,7 @@
 				<p>気になる単語対はクリックすることで Google 検索の結果を見ることが出来ます．</p>
 			</div>
 			<div class="col-sm-4">
-				<img alt="Components" src="img/idea.gif" style="height: 180px" class="img-responsive">
+				<img alt="Components" src="img/idea.gif" class="img-responsive">
 				<h3>3. 生み出す</h3>
 				<p>あとはあなたの出番です．</p>
 				<p>Let's enjoy!</p> 
