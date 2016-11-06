@@ -15,9 +15,9 @@
 					)
 				),
 				//ログイン後の移動先
-				'loginRedirect' => array('controller' => 'tw_logins', 'action' => 'index/'),
+				'loginRedirect' => array('controller' => 'home', 'action' => 'index'),
 				//ログアウト後の移動先
-				'logoutRedirect' => array('controller' => 'tw_logins', 'action' => 'login'),
+				'logoutRedirect' => array('controller' => 'home', 'action' => 'index'),
 				//ログインページのパス
 				'loginAction' => array('controller' => 'tw_logins', 'action' => 'login'),
 				//未ログイン時のメッセージ
